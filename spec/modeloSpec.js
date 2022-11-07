@@ -19,7 +19,7 @@ describe("El juego...", function () {
 	});
 
 	it("Comprobar que los usuarios están en la partida", function () {
-		expect(partida.jugadores[0].nick).toEqual(user2.nick);
+		expect(partida.jugadores[0].nick).toEqual(user1.nick);
 		expect(partida.jugadores[1].nick).toEqual(user2.nick);
 	});
 
