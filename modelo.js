@@ -171,7 +171,7 @@ function Usuario(nick, juego){
 	}
 	this.flotaHundida=function(){
 		for(var key in this.flota){
-			if(!this.flota[key].estado=="hundido"){
+			if(this.flota[key].estado!="hundido"){
 				return false
 			}
 		}
@@ -186,7 +186,8 @@ function Partida(codigo, user){
 	this.fase='inicial'; 		//new Inicial()
 	this.maxJugadores=2;
 	
-	this.agregarJugador=function(usr){
+	//CHEKEAR AQUÍ EL ESTADO
+	this.agregarJugador=function(usr){	//this.puedeAgregarJugador
 		let res=this.codigo;
 		if (this.hayHueco()){
 			this.jugadores.push(usr);
@@ -206,7 +207,12 @@ function Partida(codigo, user){
 	this.esJugando=function(){
         return this.fase=="jugando";
     }
-
+	this.esDesplegando=function(){
+        return this.fase=="desplegando";
+    }
+	this.esFinal=function(){
+        return this.fase=="final";
+    }
 	this.comprobarFase=function(){
 		if(!this.hayHueco()){
 			this.fase='desplegando';
@@ -373,4 +379,12 @@ function Agua(){
 
 }
 
-
+function Inicial(){
+	this.nombre="inicial";
+}
+function Jugando(){
+	this.nombre="jugando";
+}
+function Final(){
+	this.nombre="final";
+}
